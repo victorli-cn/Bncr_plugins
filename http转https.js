@@ -14,12 +14,6 @@
 module.exports = async s => {
 	let http = s.param(1)
 	let https = http.replace('http','https')
-//	sysMethod.push({
-		//platform: "HumanTG",
-		//groupId: "-1001370020136",
-		//userId: "5175100029",
-		//msg: https
-	//})
 	await s.inlineSugar(https)
 	return 'next'
 }
