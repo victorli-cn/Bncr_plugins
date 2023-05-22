@@ -4,7 +4,7 @@
  * @name 补https
  * @version 1.0.5
  * @description 补https
- * @rule ^([:a-z.A-Z0-9-&/? =]*)$
+ * @rule ^([A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\*\+,%;\=]*)$
  * @admin false
  * @public false
  * @priority 99
