@@ -1,6 +1,6 @@
 /**
  * @name pro导入转换
- * @rule pro
+ * @rule ^pro$
  * @rule 【JD_R_WSCK】([\s\S]+)*添加成功
  * @description 🐒这个人很懒什么都没有留下。
  * @author victor_li
@@ -9,6 +9,7 @@
  * @version v1.0.0
  * @admin true
  * @disable false
+ * @priority 99999
  * @public false
  */
  
@@ -31,11 +32,13 @@ module.exports = async s => {
 	}
 	let get_token = await axios.request({
 		url: login_url,
-		method: "post",
+		method: "post"
+,
 		data: data,
 		headers: {
 			"Content-Type": "application/json; charset=utf-8"
-		},
+		}
+,
 		json: true
 	})
 	console.log(get_token)
