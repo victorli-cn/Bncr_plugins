@@ -25,10 +25,14 @@ module.exports = async s => {
 	else if(http_str.indexOf('//') != -1){
 		let https = "https:" + http_str
 		return await s.inlineSugar(https)
+	}
+	else if(http_str == "https"){
+		return
 	}	
 	else {
 		let https = "https://" + http_str
 		return await s.inlineSugar(https)
-	}	
-	return 'next'
+	}
+	await sysMethod.sleep(5);
+	return 'next'	
 }
