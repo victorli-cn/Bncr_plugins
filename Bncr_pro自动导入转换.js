@@ -1,15 +1,17 @@
 /**
  * @name pro导入转换
- * @rule ^pro$
+ * @rule ^pro
+$
  * @rule 【JD_R_WSCK】([\s\S]+)*添加成功
  * @description 🐒这个人很懒什么都没有留下。
  * @author victor_li
  * @origin VICTOR
+ * @platform HumanTG
  * @version v1.0.0
  * @admin true
  * @disable false
  * @priority 99999
- * @public false
+ * @public true
  */
  
 module.exports = async s => {
@@ -53,21 +55,18 @@ module.exports = async s => {
 				"Authorization": Authorization
 			}
 		})
-		if(get_id.data.data.length > 2 && await pro_auto.get("id") == null) {
+		if(await pro_auto.get("id") == null) {
 			for(var i = 1; i < get_id.data.data.length; i++) {
 				await s.reply({
 					msg: get_id.data.data[i].name + "[id]:" + get_id.data.data[i].id,
 					dontEdit: true
 				})
 			}
-			return await s.reply("请设置要自动导入转换的容器id\n命令 set pro_auto id ***\n设置成功后发送'pro'测试[只支持单容器id设置]")
+			return await s.reply("请设置要自动导入转换的容器id\n命令 set pro_auto id ***\n设置成功后发送'pro'测试[只支持单容器设置]")
 		}
-		else {
-			var container_id = await pro_auto.set("id", get_id.data.data[1].id, { def: '设置成功' })
-		}
-		console.log(container_id)
 		//导入url
 		let import_url = url + "/importEnvByPanel/" + await pro_auto.get("id")
+		console.log(await pro_auto.get("id"))
 		//导入容器
 		let import_str = await axios.request({
 			url: import_url,
@@ -96,7 +95,7 @@ module.exports = async s => {
 			}
 		}
 		else {
-			await s.reply("导入失败~")
+			return await s.reply(import_str.data.message)
 		}
 		
 	}
