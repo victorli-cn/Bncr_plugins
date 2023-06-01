@@ -5,7 +5,6 @@
  * @description 🐒这个人很懒什么都没有留下。
  * @author victor_li
  * @origin VICTOR
- * @platform HumanTG
  * @version v1.0.0
  * @admin true
  * @disable false
