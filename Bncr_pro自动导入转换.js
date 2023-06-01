@@ -1,7 +1,6 @@
 /**
  * @name pro导入转换
- * @rule ^pro
-$
+ * @rule ^pro$
  * @rule 【JD_R_WSCK】([\s\S]+)*添加成功
  * @description 🐒这个人很懒什么都没有留下。
  * @author victor_li
