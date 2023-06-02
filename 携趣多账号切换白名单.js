@@ -5,18 +5,20 @@
  * @version 1.0.2
  * @description 代理更换白名单
  * @rule ^(xq|携趣)$
- * @cron 9 *\/30 * * * *
+ * @cron 9 *\/10 * * * *
  * @admin true
  * @public false
  * @priority 1000
  */
 //填写携趣的uid和ukey；name随便写，方便识别
 let xq_info = [
-	{	name: "",
+	{
+	name: "",
 		uid: "",
 		ukey: ""
 	},
-	{	
+	{
+	
 		name: "",
 		uid: "",
 		ukey: ""
@@ -28,7 +30,8 @@ let xq_info = [
 	}
 ]
 var xqdata = JSON.stringify(xq_info)
-const axios = require("axios").default
+
+const axios = require("axios").default
 module.exports = async s => {
 	const up_white = new BncrDB("up_white")
 	var get_url = await up_white.get("url")
@@ -82,7 +85,8 @@ module.exports = async s => {
 
 async function del_whitelist(uid, ukey, ip) {
 	let del_w = await axios.request({
-		url: "http://op.xiequ.cn/IpWhiteList.aspx?uid=" + uid + "&ukey=" + ukey + "&act=del&ip=" + ip
+		url: "http://op.xiequ.cn/IpWhiteList.aspx?uid=" + uid + "&ukey=" + ukey
+ + "&act=del&ip=" + ip
 	});
 	console.log('del_whitelist:' + del_w)
 	if(del_w.data == "success") {
@@ -97,14 +101,15 @@ async function del_whitelist(uid, ukey, ip) {
 };
 async function add_whitelist(uid, ukey, ip) {
 	let add_w = await axios.request({
-		url: "http://op.xiequ.cn/IpWhiteList.aspx?uid=" + uid + "&ukey=" + ukey + "&act=add&ip=" + ip
+		url: "http://op.xiequ.cn/IpWhiteList.aspx?uid=" + uid + "&ukey=" + ukey
+ + "&act=add&ip=" + ip
 	});
 	console.log('add_whitelist:' + add_w)
 	if(add_w.data == "success") {
 		return add_w.data
 	}
 	else {
-		return s.reply({
+		return sender.reply({
 			msg: add_w.data,
 			dontEdit: true
 		})
@@ -123,6 +128,6 @@ async function get_proxynum(uid, ukey) {
 		return proxynum.data
 	}
 	else {
-		return await s.reply("剩余代理：" + proxynum.data.data[0].use)
+		return await sender.reply("剩余代理：" + proxynum.data.data[0].use)
 	}
 };
