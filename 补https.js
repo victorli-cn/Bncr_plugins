@@ -13,7 +13,7 @@
 
 module.exports = async s => {
 	let http = s.param(1)
-	let http_str = http.split(/[\t\r\f\n\s]*/g).join('')
+	let http_str = http.split(/[\t\r\f\n\sa-z]*:\/\//g).join('')
 	console.log(http_str)
 	if(http_str.indexOf('https://') != -1) {
 		return await s.inlineSugar(http_str)
