@@ -29,6 +29,9 @@ let xq_info = [
 		ukey: ""
 	}
 ]
+//设置剩余代理数量最低多少切换白名单
+let proxy_num = "10"
+
 var xqdata = JSON.stringify(xq_info)
 
 const axios = require("axios").default
@@ -58,9 +61,12 @@ module.exports = async s => {
 					if(i+1 == xq_info.length) {
 						var i = 0
 					}
-					await s.reply("更换成功，请使劲造吧！")
+					await s.reply("更换白名单成功，请使劲造吧！")
 				}
 			}
+		}
+		else {
+			return await s.reply("没有提取到公网ip,请检查设置的网址是否正常~")
 		}		
 	}
 	else {
@@ -100,8 +106,8 @@ async function get_proxynum(uid, ukey) {
 		url: "http://op.xiequ.cn/ApiUser.aspx?act=suitdt&uid=" + uid + "&ukey=" + ukey,
 		json: true
 	});
-	if(proxynum.data == "ERR#Null") {
-		return proxynum.data
+	if(proxynum.data == "ERR#Null" || (+(proxynum.data.data[0].num) - +(proxynum.data.data[0].use)) == +(proxy_num) || (+(proxynum.data.data[0].num) - +(proxynum.data.data[0].use)) < +(proxy_num)) {
+		return "ERR#Null"
 	}
 	else {
 		console.log("剩余代理：" + (+(proxynum.data.data[0].num) - +(proxynum.data.data[0].use)))
