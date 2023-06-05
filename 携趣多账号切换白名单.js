@@ -9,10 +9,6 @@
  * @admin true
  * @public false
  * @priority 1000
- 说明：
-     1、所有帐号中必须有一个帐号有白名单
-     2、是从有白名单的帐号开始判断不是从第一个帐号判断
-     3、没有0点重置
  */
 //填写携趣的uid和ukey；name随便写，方便识别
 let xq_info = [
@@ -58,6 +54,33 @@ module.exports = async s => {
 		var get_ip = public_ip.data
 		console.log('get_ip:' + get_ip)
 		if(get_ip) {
+			let now = new Date()
+			if(now.getHours() == 0 && now.getMinutes() == 0) {
+				for(var n = 0; n < xq_info.length; n++) {
+					let reset_getwhite = await get_whitelist(JSON.parse(xqdata)[n]['uid'], JSON.parse(xqdata)[n]['ukey'])
+					if(reset_getwhite != "none" && n != 0) {
+						let reset_delwhite = await del_whitelist(JSON.parse(xqdata)[n]['uid'], JSON.parse(xqdata)[n]['ukey'])
+						if(reset_delwhite == "success") {
+							await s.reply(JSON.parse(xqdata)[n]['name'] + "删除白名单成功")
+							let reset_addwhite = await add_whitelist(JSON.parse(xqdata)[0]['uid'], JSON.parse(xqdata)[0]['ukey'], get_ip)
+							if(reset_addwhite == "success") {
+								if(isCron) {
+									sysMethod.push({
+										platform: platform,
+										userId: userid,
+										groupId: groupid,
+										msg: JSON.parse(xqdata)[0]['name'] + "重置并添加白名单成功，请使劲造吧！"
+									})							
+								}
+								else {
+									await s.reply(JSON.parse(xqdata)[0]['name'] + "重置并添加白名单成功，请使劲造吧！")	
+								}														
+							}													
+						}						
+					}
+				}
+			}
+			else {
 			for(var i = 0; i < xq_info.length; i++) {
 				let get_proxy = await get_proxynum(JSON.parse(xqdata)[i]['uid'], JSON.parse(xqdata)[i]['ukey'], JSON.parse(xqdata)[i]['name'])
 				let get_white = await get_whitelist(JSON.parse(xqdata)[i]['uid'], JSON.parse(xqdata)[i]['ukey'])				
@@ -145,6 +168,7 @@ module.exports = async s => {
 					}
 
 				}
+			}
 			}
 		}
 		else {
