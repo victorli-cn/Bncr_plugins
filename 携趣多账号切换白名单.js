@@ -80,11 +80,11 @@ module.exports = async s => {
 											platform: platform,
 											userId: userid,
 											groupId: groupid,
-											msg: JSON.parse(xqdata)[0]['name'] + "更换白名单成功，请使劲造吧！"
+											msg: JSON.parse(xqdata)[0]['name'] + "添加并更换白名单成功，请使劲造吧！"
 										})							
 									}
 									else {
-										await s.reply(JSON.parse(xqdata)[0]['name'] + "更换白名单成功，请使劲造吧！")	
+										await s.reply(JSON.parse(xqdata)[0]['name'] + "添加并更换白名单成功，请使劲造吧！")	
 									}														
 								}								
 							}
