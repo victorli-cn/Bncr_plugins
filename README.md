@@ -17,8 +17,6 @@ Dswang https://github.com/callacat/BncrJS_plugins
 
 给我一颗麦丽素 https://github.com/dandanainiyo/bncr_plugins.git
 
-VICTOR LI https://github.com/victorli-cn/Bncr_plugins.git
-
 DusKing https://github.com/DusKing1/Bncr_plugin.git
 
 烟烟烟烟烟雨啊！！！ https://github.com/yanyuwangluo/Bncr_plugins
