@@ -22,3 +22,5 @@ DusKing https://github.com/DusKing1/Bncr_plugin.git
 烟烟烟烟烟雨啊！！！ https://github.com/yanyuwangluo/Bncr_plugins
 
 Doraemon_o https://github.com/fjwpsyb/Bncr_plugin
+
+寒寒 https://github.com/djun90/hh_bncr_plugins
