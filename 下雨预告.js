@@ -44,7 +44,7 @@ module.exports = async sender => {
 	if(isCron) {
 		sysMethod.push({
 			platform: "wxXyo",
-			userId: "PangHuang1314",
+			userId: "",
 			msg: "【下雨提示】\n" + data.summary
 		})
 	}
