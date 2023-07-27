@@ -14,14 +14,14 @@
 sysMethod.cron.newCron('0 55 8 * * MON-FRI', () => {
 	sysMethod.push({
 		platform: 'wxXyo',
-		userId: 'PangHuang1314',
+		userId: '',
 		msg: '现在立刻钉钉上班打卡~'
 	})
 })	
 sysMethod.cron.newCron('0 5 18 * * MON-FRI', () => {
 	sysMethod.push({
 		platform: 'wxXyo',
-		userId: 'PangHuang1314',
+		userId: '',
 		msg: '现在立刻钉钉下班打卡~'
 	})
 })
