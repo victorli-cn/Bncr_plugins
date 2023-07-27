@@ -112,7 +112,7 @@ module.exports = async sender => {
 		var msg = titlemsg + tqdata.data + tianqizsmsg + "\n \n戴好口罩，做好防护，开心一整天！\n                        ---爱你的老公"
 		sysMethod.push({
 			platform: "wxXyo",
-			userId: "Shumy_1117",
+			userId: "",
 			msg: msg,
 			type: "text"
 		})
