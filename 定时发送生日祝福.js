@@ -16,7 +16,7 @@ module.exports = async s => {
 	if(isCron) {
 		sysMethod.push({
 			platform: "wxXyo",
-			userId: "PangHuang1314",
+			userId: "",
 			type: "video",
 			path: "C:\\Users\\Public\\Videos\\happybirthday.mp4"
 		})
